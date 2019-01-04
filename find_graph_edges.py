@@ -9,11 +9,8 @@ def find_all_edges(nodes):
         if nodes < 1:
             message = "You must enter a positive integer indicating the number of nodes."
             return message
-        elif nodes == 1:
-            total_edges = 0
-            return total_edges
-        elif nodes == 2:
-            total_edges = 1
+        elif nodes <= 2:
+            total_edges = nodes - 1
             return total_edges
         else:
             peripheral_edges = nodes
