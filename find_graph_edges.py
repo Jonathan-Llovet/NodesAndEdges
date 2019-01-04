@@ -1,4 +1,7 @@
 def find_all_edges(nodes):
+    '''Finds the number of edges within a graph with the specified number of nodes,
+    where there is a single connection between every node.
+    An example application of this is to determine how many distinct pairs are in a group.'''
     if nodes < 1:
         message = "You must enter a positive number of nodes"
         return message
