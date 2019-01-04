@@ -23,6 +23,10 @@ def find_all_edges(nodes):
 
 
 def find_inner_edges(nodes):
+    '''Returns the number of inner edges in graph containing specified number of nodes, 
+    where there is a single connection between every pair of nodes.
+    Inner edges here are the edges connecting non-adjacent nodes in a polygon. 
+    For a simple geometrical case, the diagonals of a quadrilateral are inner edges.'''
     if nodes < 3:
         inner_edges = 0
         return inner_edges
