@@ -1,6 +1,6 @@
 def find_all_edges(nodes):
     '''Finds the number of edges within a graph with the specified number of nodes,
-    where there is a single connection between every node.
+    where there is a single connection between every pair of nodes.
     An example application of this is to determine how many distinct pairs are in a group.'''
     try:
         if type(nodes) != int:
