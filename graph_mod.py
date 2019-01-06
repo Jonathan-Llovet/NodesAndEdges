@@ -28,11 +28,18 @@ def add_em_up(base, steps):
         running_sums.append(sum_of_nodes_hit)
         # positions
         nodes_total += 1    
+    journey = [positions_hit, running_sums, sum_of_nodes_hit, nodes_total]
+    return journey
 
-        print(f"*\t{sum_of_nodes_hit % base}\t*\t{sum_of_nodes_hit}\t*")
-
-    # sum_of_nodes_hit += steps
-    # print(f"{sum_of_nodes_hit}\t{sum_of_nodes_hit % base}")
+def print_journey(journey):
+    i = 0
+    while journey[0][i]:
+        print(f"*\t{journey[0][i]}\t*\t{journey[1][i]}\t*")
+        i += 1
+    
+def print_footer(base, steps, journey):
+    sum_of_nodes_hit = journey[2]
+    nodes_total = journey[3]
     print("*"*33)
     print(f"We have traversed our graph {int(sum_of_nodes_hit / base)} times!")
     print(f"We have landed on {nodes_total} nodes in our journey around the graph!")
@@ -41,7 +48,10 @@ def add_em_up(base, steps):
     else:
         print(f"Thanks for asking. Come again.")   
 
-print_header(base, steps)
-add_em_up(base, steps)
 
+if __name__ == "__main__":
+    print_header(base, steps)
+    journey = add_em_up(base, steps)    
+    print_journey(journey)
+    print_footer(base, steps, journey)
     
