@@ -6,23 +6,22 @@
 
 base = 150
 steps = 6
-def print_header(base):
+def print_header(base, steps):
     print(f"\n\tbase = {base}\n")
     print(f"*\tpos\t*\tsum\t*")
     print("*"*33)
-
-def add_em_up(base, steps):
-    # nodes_hit = []
-    # values_hit = []
-    sum_of_nodes_hit = steps
-    nodes_total = 1
-
     print(f"\n*\t0\t*\t0\t*")
     # Prints the initial position
     print(f"*\t{steps}\t*\t{steps}\t*")
     # Prints the first step and the base
+
+def add_em_up(base, steps):
     positions_hit = []
     running_sums = []
+
+    sum_of_nodes_hit = steps
+    nodes_total = 1
+    
     while (sum_of_nodes_hit + steps) % base != steps:
         sum_of_nodes_hit += steps
         positions_hit.append(sum_of_nodes_hit % base)
@@ -42,7 +41,7 @@ def add_em_up(base, steps):
     else:
         print(f"Thanks for asking. Come again.")   
 
-print_header(base)
+print_header(base, steps)
 add_em_up(base, steps)
 
     
