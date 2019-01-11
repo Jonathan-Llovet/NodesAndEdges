@@ -28,8 +28,20 @@ def add_em_up(base, steps):
         running_sums.append(sum_of_nodes_hit)
         # positions
         nodes_total += 1    
-    journey = [positions_hit, running_sums, sum_of_nodes_hit, nodes_total]
+    journey = [positions_hit, running_sums, sum_of_nodes_hit, nodes_total, base, steps]
     return journey
+
+def graph_journey(journey):
+    base = journey[4]
+    interval_on_circle = 360/base
+    # positions_hit = journey[0]
+    print(interval_on_circle)
+
+
+
+
+
+
 
 def print_journey(journey):
     i = 0
@@ -52,6 +64,6 @@ def print_footer(base, steps, journey):
 if __name__ == "__main__":
     print_header(base, steps)
     journey = add_em_up(base, steps)    
-    print_journey(journey)
-    print_footer(base, steps, journey)
-    
+    # print_journey(journey)
+    # print_footer(base, steps, journey)
+    graph_journey(journey)
