@@ -3,6 +3,7 @@
 # # Incrementor
 # steps = int(input("Enter the number of steps that should be incremented:\n"))
 # 
+import math
 
 base = 150
 steps = 6
@@ -33,9 +34,18 @@ def add_em_up(base, steps):
 
 def graph_journey(journey):
     base = journey[4]
-    interval_on_circle = 360/base
-    # positions_hit = journey[0]
-    print(interval_on_circle)
+    theta = 360/base
+    positions_hit = journey[0]
+    hit_data = []
+    for i in range(len(positions_hit)):
+        node_theta = theta*positions_hit[i]
+        hit = {
+            "angle": node_theta,
+            "x": math.cos(node_theta),
+            "y": math.sin(node_theta)
+        }
+        hit_data.append(hit)
+    return hit_data
 
 
 
