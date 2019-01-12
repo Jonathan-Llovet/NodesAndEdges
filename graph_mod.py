@@ -123,7 +123,7 @@ def draw_graph(base, steps_to_increment, journey, hit_data, save=False):
     plt.axis('equal')
     plt.tight_layout()
     if save == True:
-        plt.savefig(f"Base_{base}_with_{steps_to_increment}_Increment.png")
+        plt.savefig(f"Base_{base}_with_{steps_to_increment}_Increment.jpeg")
     else:
         pass
     plt.show()
