@@ -4,6 +4,7 @@
 # steps_to_increment = int(input("Enter the number of steps that should be incremented:\n"))
 # 
 import math
+import matplotlib.pyplot as plt
 
 base = 10
 steps_to_increment = 3
@@ -48,7 +49,7 @@ def calculate_journey(base, steps_to_increment):
 
 def calculate_graph_coordinates(journey):
     base = journey[4]
-    theta = base/360
+    theta = 360/base
     clockface_values_of_nodes = journey[0]
     hit_data = []
     for i in range(len(clockface_values_of_nodes)):
@@ -60,6 +61,17 @@ def calculate_graph_coordinates(journey):
         }
         hit_data.append(hit)
     return hit_data
+
+def draw_graph(hit_data):
+    xs = []
+    ys = []
+    for hit in hit_data:
+        xs.append(hit.get("x"))
+        ys.append(hit.get("y"))
+    plt.scatter(xs, ys, c='red')
+    plt.ylabel('some numbers')
+    plt.show()
+    
 
 def diagnostic(hit_data):
     for h in range(len(hit_data)):
@@ -91,7 +103,8 @@ def print_footer(base, steps_to_increment, journey):
 if __name__ == "__main__":
     # print_header(base, steps_to_increment)
     journey = calculate_journey(base, steps_to_increment)    
-    print_journey(journey)
+    # print_journey(journey)
     # print_footer(base, steps_to_increment, journey)
-    # hit_data = calculate_graph_coordinates(journey)
+    hit_data = calculate_graph_coordinates(journey)
+    draw_graph(hit_data)
     # diagnostic(hit_data)
