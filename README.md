@@ -4,6 +4,8 @@
 
 The modules written here are written in `python 3.6.4`. Please make sure that you have this or a later version installed to ensure that they run.
 
+Other dependencies: `matplotlib`. If you do not have `matplotlib` installed, run `pip install matplotlib` from the terminal. If Python 2 is a version you use by default, you may have to use `pip3 install matplotlib` to install it to be compatible with this module.
+
 ### graph_mod shows a graph that demonstrates modular arithmetic
 
 The user specifies any integer as a base, then specifies a number to increment (i.e. count) by.
