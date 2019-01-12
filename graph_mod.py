@@ -99,7 +99,7 @@ def connectpoints(x,y,p1,p2):
     plt.plot([x1,x2],[y1,y2],'k-')
 
 # Grapher
-def draw_graph(hit_data):
+def draw_graph(base, steps_to_increment, hit_data):
     xs = []
     ys = []
     for hit in hit_data:
@@ -113,7 +113,7 @@ def draw_graph(hit_data):
         i += 1
         j += 1
     connectpoints(xs, ys, len(xs)-1, 0)
-    plt.ylabel('some numbers')
+    plt.title(f'A graph with {base} nodes\nAnd a step of {steps_to_increment}')
     plt.axis('equal')
     plt.show()
 
@@ -160,7 +160,7 @@ if __name__ == "__main__":
         journey = calculate_journey(base, steps_to_increment)
         print_section(base, steps_to_increment, journey)
         hit_data = calculate_graph_coordinates(base, journey)
-        draw_graph(hit_data)
+        draw_graph(base, steps_to_increment, hit_data)
         # diagnostic(hit_data)
     
     main()
