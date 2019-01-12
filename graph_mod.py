@@ -5,8 +5,8 @@
 # 
 import math
 
-base = 150
-steps = 6
+base = 10
+steps = 3
 def print_header(base, steps):
     print(f"\n\tbase = {base}\n")
     print(f"*\tpos\t*\tsum\t*")
@@ -34,11 +34,11 @@ def add_em_up(base, steps):
 
 def graph_journey(journey):
     base = journey[4]
-    theta = 360/base
+    theta = base/360
     positions_hit = journey[0]
     hit_data = []
     for i in range(len(positions_hit)):
-        node_theta = theta*positions_hit[i]
+        node_theta = theta*i
         hit = {
             "angle": node_theta,
             "x": math.cos(node_theta),
@@ -47,7 +47,12 @@ def graph_journey(journey):
         hit_data.append(hit)
     return hit_data
 
-
+def diagnostic(hit_data):
+    for h in range(len(hit_data)):
+        print(f"angle: {hit_data[h].get('angle')}")
+        print(f"x: {hit_data[h].get('y')}")
+        print(f"y: {hit_data[h].get('x')}")
+    
 
 
 
@@ -76,4 +81,5 @@ if __name__ == "__main__":
     journey = add_em_up(base, steps)    
     # print_journey(journey)
     # print_footer(base, steps, journey)
-    graph_journey(journey)
+    hit_data = graph_journey(journey)
+    diagnostic(hit_data)
