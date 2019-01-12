@@ -10,10 +10,6 @@ def print_header(base, steps_to_increment):
     print(f"\n\tbase = {base}\n")
     print(f"*\tpos\t*\tsum\t*")
     print("*"*33)
-    print(f"\n*\t0\t*\t0\t*")
-    # Prints the initial position
-    print(f"*\t{steps_to_increment}\t*\t{steps_to_increment}\t*")
-    # Prints the first step and the base
 
 def calculate_journey(base, steps_to_increment):
     clockface_values_of_nodes = [0]
@@ -96,10 +92,10 @@ def print_footer(base, steps_to_increment, journey):
 
 
 if __name__ == "__main__":
-    # print_header(base, steps_to_increment)
     journey = calculate_journey(base, steps_to_increment)    
-    # print_journey(journey)
-    # print_footer(base, steps_to_increment, journey)
+    print_header(base, steps_to_increment)
+    print_journey(journey)
+    print_footer(base, steps_to_increment, journey)
     hit_data = calculate_graph_coordinates(journey)
     draw_graph(hit_data)
     # diagnostic(hit_data)
