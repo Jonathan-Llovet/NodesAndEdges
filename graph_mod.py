@@ -2,13 +2,6 @@ import math
 import matplotlib.pyplot as plt
 
 # -----------------------------------------------------------------
-# User input section
-# Base, i.e. number of nodes - this will be used as the x in n % x
-base = int(input("Enter an integer to serve as the base:\n"))
-# Incrementor
-steps_to_increment = int(input("Enter the number of steps that should be incremented:\n"))
-
-# -----------------------------------------------------------------
 
 # Textual summary section
 
@@ -105,7 +98,7 @@ def connectpoints(x,y,p1,p2):
     y1, y2 = y[p1], y[p2]
     plt.plot([x1,x2],[y1,y2],'k-')
 
-
+# Grapher
 def draw_graph(hit_data):
     xs = []
     ys = []
@@ -139,8 +132,35 @@ def diagnostic(hit_data):
 # Checks for main
 
 if __name__ == "__main__":
-    journey = calculate_journey(base, steps_to_increment)    
-    print_section(base, steps_to_increment, journey)
-    hit_data = calculate_graph_coordinates(base, journey)
-    draw_graph(hit_data)
-    # diagnostic(hit_data)
+
+    def main():
+        from os import system, name
+        def clear():
+            '''Clears terminal. Thanks to geeksforgeeks for an explanation of this function.'''
+            # for Windows
+            if name == 'nt':
+                _ = system('cls')
+            # for Linux and Mac
+            else:
+                _ = system('clear')
+        clear()
+
+# -----------------------------------------------------------------
+
+        # User input section
+        # Base, i.e. number of nodes - this will be used as the x in n % x
+        base = int(input("Enter an integer to serve as the base:\n"))
+        # Incrementor
+        steps_to_increment = int(input("Enter the number of steps that should be incremented:\n")) 
+
+# -----------------------------------------------------------------
+
+        # Main execution
+
+        journey = calculate_journey(base, steps_to_increment)
+        print_section(base, steps_to_increment, journey)
+        hit_data = calculate_graph_coordinates(base, journey)
+        draw_graph(hit_data)
+        # diagnostic(hit_data)
+    
+    main()
