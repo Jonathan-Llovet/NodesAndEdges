@@ -99,7 +99,7 @@ def connectpoints(x,y,p1,p2):
     plt.plot([x1,x2],[y1,y2],'k-')
 
 # Grapher
-def draw_graph(base, steps_to_increment, hit_data, save=False):
+def draw_graph(base, steps_to_increment, journey, hit_data, save=False):
     xs = []
     ys = []
     for hit in hit_data:
@@ -114,7 +114,14 @@ def draw_graph(base, steps_to_increment, hit_data, save=False):
         j += 1
     connectpoints(xs, ys, len(xs)-1, 0)
     plt.title(f'A graph with {base} nodes\nAnd a step of {steps_to_increment}')
+    sum_of_nodes_hit = journey[2]
+    nodes_total = journey[3]
+    xlabel = f"We have traversed our graph {int(sum_of_nodes_hit / base)} times."
+    if nodes_total == base:
+        xlabel += (f"\n{steps_to_increment} and {base} are coprime!")
+    plt.xlabel(xlabel, fontsize=10)
     plt.axis('equal')
+    plt.tight_layout()
     if save == True:
         plt.savefig(f"Base_{base}_with_{steps_to_increment}_Increment.png")
     else:
@@ -175,7 +182,7 @@ if __name__ == "__main__":
         print_section(base, steps_to_increment, journey)
         hit_data = calculate_graph_coordinates(base, journey)
         save = save_plotter(save_plot)
-        draw_graph(base, steps_to_increment, hit_data, save=save)
+        draw_graph(base, steps_to_increment, journey, hit_data, save=save)
         # diagnostic(hit_data)
     
     main()
