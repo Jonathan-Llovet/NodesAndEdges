@@ -16,7 +16,7 @@ def print_header(base, steps_to_increment):
     print(f"*\t{steps_to_increment}\t*\t{steps_to_increment}\t*")
     # Prints the first step and the base
 
-def add_em_up(base, steps_to_increment):
+def calculate_journey(base, steps_to_increment):
     clockface_values_of_nodes = [0]
     running_sum_of_node_values_in_base_10 = [0]
     # Initialize to include starting position, i.e., position 0
@@ -90,7 +90,7 @@ def print_footer(base, steps_to_increment, journey):
 
 if __name__ == "__main__":
     # print_header(base, steps_to_increment)
-    journey = add_em_up(base, steps_to_increment)    
+    journey = calculate_journey(base, steps_to_increment)    
     print_journey(journey)
     # print_footer(base, steps_to_increment, journey)
     # hit_data = graph_journey(journey)
