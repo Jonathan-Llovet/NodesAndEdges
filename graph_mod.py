@@ -18,7 +18,7 @@ def print_header(base, steps_to_increment):
 
 def add_em_up(base, steps_to_increment):
     clockface_values_of_nodes = []
-    running_sums = []
+    running_sum_of_node_values_in_base_10 = []
 
     sum_of_nodes_hit = steps_to_increment
     nodes_total = 1
@@ -26,10 +26,15 @@ def add_em_up(base, steps_to_increment):
     while (sum_of_nodes_hit + steps_to_increment) % base != steps_to_increment:
         sum_of_nodes_hit += steps_to_increment
         clockface_values_of_nodes.append(sum_of_nodes_hit % base)
-        running_sums.append(sum_of_nodes_hit)
+        running_sum_of_node_values_in_base_10.append(sum_of_nodes_hit)
         # positions
         nodes_total += 1    
-    journey = [clockface_values_of_nodes, running_sums, sum_of_nodes_hit, nodes_total, base, steps_to_increment]
+    journey = [clockface_values_of_nodes, 
+                running_sum_of_node_values_in_base_10, 
+                sum_of_nodes_hit, 
+                nodes_total, 
+                base, 
+                steps_to_increment]
     return journey
 
 def graph_journey(journey):
