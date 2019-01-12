@@ -99,7 +99,7 @@ def connectpoints(x,y,p1,p2):
     plt.plot([x1,x2],[y1,y2],'k-')
 
 # Grapher
-def draw_graph(base, steps_to_increment, hit_data):
+def draw_graph(base, steps_to_increment, hit_data, save=False):
     xs = []
     ys = []
     for hit in hit_data:
@@ -115,6 +115,10 @@ def draw_graph(base, steps_to_increment, hit_data):
     connectpoints(xs, ys, len(xs)-1, 0)
     plt.title(f'A graph with {base} nodes\nAnd a step of {steps_to_increment}')
     plt.axis('equal')
+    if save == True:
+        plt.savefig(f"Base_{base}_with_{steps_to_increment}_Increment.png")
+    else:
+        pass
     plt.show()
 
 # -----------------------------------------------------------------    
@@ -135,6 +139,7 @@ if __name__ == "__main__":
 
     def main():
         from os import system, name
+        import time
         def clear():
             '''Clears terminal. Thanks to geeksforgeeks for an explanation of this function.'''
             # for Windows
@@ -148,6 +153,9 @@ if __name__ == "__main__":
 # -----------------------------------------------------------------
 
         # User input section
+        save_plot = input("Do you want to save the graph when you're done?\n(y/n)\n")
+        time.sleep(.2)
+        clear()
         # Base, i.e. number of nodes - this will be used as the x in n % x
         base = int(input("Enter an integer to serve as the base:\n"))
         # Incrementor
@@ -155,12 +163,19 @@ if __name__ == "__main__":
 
 # -----------------------------------------------------------------
 
+        def save_plotter(save_plot):
+            if save_plot.lower() == "y":
+                return True
+            else:
+                return False
+
         # Main execution
 
         journey = calculate_journey(base, steps_to_increment)
         print_section(base, steps_to_increment, journey)
         hit_data = calculate_graph_coordinates(base, journey)
-        draw_graph(base, steps_to_increment, hit_data)
+        save = save_plotter(save_plot)
+        draw_graph(base, steps_to_increment, hit_data, save=save)
         # diagnostic(hit_data)
     
     main()
