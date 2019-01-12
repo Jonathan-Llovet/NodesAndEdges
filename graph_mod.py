@@ -1,13 +1,11 @@
-# Base, i.e. number of nodes - this will be used as the x in n % x
-# base = int(input("Enter an integer to serve as the base:\n"))
-# # Incrementor
-# steps_to_increment = int(input("Enter the number of steps that should be incremented:\n"))
-# 
 import math
 import matplotlib.pyplot as plt
 
-base = 10
-steps_to_increment = 3
+# Base, i.e. number of nodes - this will be used as the x in n % x
+base = int(input("Enter an integer to serve as the base:\n"))
+# Incrementor
+steps_to_increment = int(input("Enter the number of steps that should be incremented:\n"))
+
 def print_header(base, steps_to_increment):
     print(f"\n\tbase = {base}\n")
     print(f"*\tpos\t*\tsum\t*")
@@ -70,6 +68,7 @@ def draw_graph(hit_data):
         ys.append(hit.get("y"))
     plt.scatter(xs, ys, c='red')
     plt.ylabel('some numbers')
+    plt.axis('equal')
     plt.show()
     
 
@@ -79,10 +78,6 @@ def diagnostic(hit_data):
         print(f"x: {hit_data[h].get('y')}")
         print(f"y: {hit_data[h].get('x')}")
     
-
-
-
-
 
 def print_journey(journey):
     for i in range(len(journey[0])):
