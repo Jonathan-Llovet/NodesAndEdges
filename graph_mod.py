@@ -35,23 +35,20 @@ def calculate_journey(base, steps_to_increment):
     journey = [clockface_values_of_nodes, 
                 running_sum_of_node_values_in_base_10, 
                 sum_of_nodes_hit, 
-                nodes_total, 
-                base, 
-                steps_to_increment]
+                nodes_total]
     # Save data into a list to be accessed by other functions
     return journey
 
-def calculate_graph_coordinates(journey):
-    base = journey[4]
+def calculate_graph_coordinates(base, steps_to_increment, journey):
     theta = 360/base
     clockface_values_of_nodes = journey[0]
     hit_data = []
     for i in range(len(clockface_values_of_nodes)):
-        node_theta = theta*i
+        node_theta = theta*clockface_values_of_nodes[i]
         hit = {
             "angle": node_theta,
-            "x": math.cos(node_theta),
-            "y": math.sin(node_theta)
+            "x": get_cosine_from_degrees(node_theta),
+            "y": get_sine_from_degrees(node_theta)
         }
         hit_data.append(hit)
     return hit_data
@@ -63,6 +60,15 @@ def connectpoints(x,y,p1,p2):
     y1, y2 = y[p1], y[p2]
     plt.plot([x1,x2],[y1,y2],'k-')
 
+
+
+def get_cosine_from_degrees(x):
+    cosine = math.degrees(math.cos(math.radians(x)))
+    return cosine
+
+def get_sine_from_degrees(y):
+    sine = math.degrees(math.sin(math.radians(y)))
+    return sine
 
 def draw_graph(hit_data):
     xs = []
@@ -111,6 +117,6 @@ if __name__ == "__main__":
     print_header(base, steps_to_increment)
     print_journey(journey)
     print_footer(base, steps_to_increment, journey)
-    hit_data = calculate_graph_coordinates(journey)
+    hit_data = calculate_graph_coordinates(base, steps_to_increment, journey)
     draw_graph(hit_data)
     # diagnostic(hit_data)
