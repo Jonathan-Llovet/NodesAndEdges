@@ -46,7 +46,7 @@ def calculate_journey(base, steps_to_increment):
     # Save data into a list to be accessed by other functions
     return journey
 
-def graph_journey(journey):
+def calculate_graph_coordinates(journey):
     base = journey[4]
     theta = base/360
     clockface_values_of_nodes = journey[0]
@@ -93,5 +93,5 @@ if __name__ == "__main__":
     journey = calculate_journey(base, steps_to_increment)    
     print_journey(journey)
     # print_footer(base, steps_to_increment, journey)
-    # hit_data = graph_journey(journey)
+    # hit_data = calculate_graph_coordinates(journey)
     # diagnostic(hit_data)
