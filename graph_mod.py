@@ -56,6 +56,14 @@ def calculate_graph_coordinates(journey):
         hit_data.append(hit)
     return hit_data
 
+def connectpoints(x,y,p1,p2):
+    '''Credit to https://stackoverflow.com/users/588071/tmdavison on the question here: 
+    https://stackoverflow.com/questions/35363444/plotting-lines-connecting-points'''
+    x1, x2 = x[p1], x[p2]
+    y1, y2 = y[p1], y[p2]
+    plt.plot([x1,x2],[y1,y2],'k-')
+
+
 def draw_graph(hit_data):
     xs = []
     ys = []
@@ -63,6 +71,13 @@ def draw_graph(hit_data):
         xs.append(hit.get("x"))
         ys.append(hit.get("y"))
     plt.scatter(xs, ys, c='red')
+    i = 0
+    j = 1
+    while j < len(xs):
+        connectpoints(xs, ys, i, j)
+        i += 1
+        j += 1
+    connectpoints(xs, ys, len(xs)-1, 0)
     plt.ylabel('some numbers')
     plt.axis('equal')
     plt.show()
